@@ -1,4 +1,3 @@
-#Date,Name of State / UT,Latitude,Longitude,Total Confirmed cases,Death,Cured/Discharged/Migrated,New cases,New deaths,New recovered
 f=open("file.csv","r")
 dict={}
 for lines in f:
@@ -21,10 +20,8 @@ def Fetchdata(**kwargs):
                 print("Total confirmed cases : ",v["confirmed"])
                 if("param" in kwargs):
                     val=kwargs["param"]
-                    if(val=="recovered"):
-                        print("Recoverd :",v["recovered"])
-                    elif(val=="death"):
-                        print("Death :",v["death"])
+                    if(val in v):
+                        print(val,":",v[val])
 
 
 
