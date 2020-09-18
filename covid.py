@@ -13,17 +13,20 @@ for lines in f:
         dict[state] = {"confirmed": confirm, "recovered": recovered, "death": death}
 
 def Fetchdata(**kwargs):
-    for k,v in dict.items():
-        if(k==kwargs["state"]):
-            print("Total confirmed cases : ",v["confirmed"])
-            if("param" in kwargs):
-                val=kwargs["param"]
-                if(val=="recovered"):
-                    print("Recoverd :",v["recovered"])
-                elif(val=="death"):
-                    print("Death :",v["death"])
+    if(kwargs["state"] not in dict):
+        print("No result found")
+    else:
+        for k,v in dict.items():
+            if(k==kwargs["state"]):
+                print("Total confirmed cases : ",v["confirmed"])
+                if("param" in kwargs):
+                    val=kwargs["param"]
+                    if(val=="recovered"):
+                        print("Recoverd :",v["recovered"])
+                    elif(val=="death"):
+                        print("Death :",v["death"])
 
 
 
 
-Fetchdata(state="Kerala",param="death")
+Fetchdata(state="Kerala",param="recovered")
